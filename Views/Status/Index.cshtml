@@ -1,0 +1,55 @@
+﻿@model IEnumerable<PizzaOrderSystem2.Models.Status>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<style>
+    .navbar-expand-sm {
+        background-color: crimson;
+    }
+</style>
+<body style="background-color:burlywood;">
+</body>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StatusID)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Order.OrderID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderStatus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StatusID)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order.OrderID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderStatus)
+            </td>
+            <td>
+                @*<a asp-action="Edit" asp-route-id="@item.StatusID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.StatusID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.StatusID">Delete</a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

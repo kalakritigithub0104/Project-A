@@ -1,0 +1,72 @@
+﻿@model IEnumerable<PizzaOrderSystem2.Models.Pizza>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<style>
+    .navbar-expand-sm {
+        background-color: crimson;
+    }
+</style>
+<body style="background-color:burlywood;">
+</body>
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Speciality)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Crust)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Size)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Speciality)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Crust)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            @*<td>
+                <a asp-action="Edit" asp-route-id="@item.PizzaID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PizzaID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PizzaID">Delete</a>
+            </td>*@
+        </tr>
+}
+    </tbody>
+</table>

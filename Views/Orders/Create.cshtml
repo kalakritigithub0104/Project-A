@@ -1,0 +1,138 @@
+﻿@model PizzaOrderSystem2.Models.Order
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+<style>
+    .navbar-expand-sm {
+        background-color: crimson;
+    }
+</style>
+<body style="background-color:burlywood;">
+    </body>
+
+<h4>Order</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+
+                Check PizzaID for selecting a Pizza :
+
+                <select class="form-control" id="name" name="name">
+                    <option></option>
+                    <option class="pizza" value="200"> 1.Margherita (S) - Veg</option>
+                    <option class="pizza" value="300"> 2.Margherita (M) - Veg</option>
+                    <option class="pizza" value="500"> 3.Margherita (L)- Veg</option>
+                    <option class="pizza" value="250"> 4.Peppy Paneer (S)- Veg</option>
+                    <option class="pizza" value="340"> 5.Peppy Paneer (M)- Veg</option>
+                    <option class="pizza" value="630"> 6.Peppy Paneer (L)- Veg</option>
+                    <option class="pizza" value="199"> 7.Veg Extravaganza (S)- Veg</option>
+                    <option class="pizza" value="399"> 8.Veg Extravaganza (M)- Veg</option>
+                    <option class="pizza" value="599"> 9. Veg Extravaganza (L)- Veg</option>
+                    <option class="pizza" value="300"> 10.Veggie Paradise (S)- Veg</option>
+                    <option class="pizza" value="450"> 11.Veggie Paradise (M)- Veg</option>
+                    <option class="pizza" value="650"> 12.Veggie Paradise (L)- Veg</option>
+                    <option class="pizza" value="229"> 13.Pepper Barbecue Chicken (S)- Non Veg</option>
+                    <option class="pizza" value="449"> 14.Pepper Barbecue Chicken (M)- Non Veg</option>
+                    <option class="pizza" value="649"> 15.Pepper Barbecue Chicken (L)- Non Veg</option>
+                    <option class="pizza" value="299"> 17.Chicken Dominator (S)- Non Veg</option>
+                    <option class="pizza" value="430"> 18.Chicken Dominator (M)- Non Veg</option>
+                    <option class="pizza" value="600"> 19.Chicken Dominator (L)- Non Veg</option>
+                    <option class="pizza" value="459"> 20.NonVeg Supreme (S)- Non Veg</option>
+                    <option class="pizza" value="599"> 21.NonVeg Supreme (M)- Non Veg</option>
+                    <option class="pizza" value="819"> 22. NonVeg Supreme (L)- Non Veg</option>
+
+                </select>
+
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label"></label>
+                <input asp-for="Quantity" id="qnty" class="form-control" onkeyup="validate()" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">AddedFlavors
+                @*<label asp-for="AddedFlavors" class="control-label"></label>
+                <input asp-for="AddedFlavors" class="form-control" />
+                <span asp-validation-for="AddedFlavors" class="text-danger"></span>*@
+                <select asp-for="AddedFlavors" class="form-control" asp-items="ViewBag.AddedFlavors" name="AddedFlavors" required>
+                    <option></option>
+                    <option class="Extra">Extra Cheese</option>
+                    <option class="Extra">Potato, sausage, pancetta/speck/bacon.</option>
+                    <option class="Extra">Gorgonzola and mushroom</option>
+                    <option class="Extra">Black olives, anchovies, capers</option>
+                    <option class="Extra">Capers, anchovies, eggplant, capsicum</option>
+                    <option class="Extra">Ricotta, cherry tomato, baby spinach </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contact_No" class="control-label"></label>
+                <input asp-for="Contact_No" class="form-control" />
+                <span asp-validation-for="Contact_No" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Total" class="control-label"></label>
+                <input asp-for="Total" id="tot" class="form-control" readonly/>
+                <span asp-validation-for="Total" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PizzaID" class="control-label"></label>
+                <select asp-for="PizzaID" class ="form-control" asp-items="ViewBag.PizzaID"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" onclick="confirm('Confirm Order'),confirm('Your order has been confirmed')" class="btn btn-primary" />
+                
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Status" asp-action="Index"></a> @*TRIAL*@
+</div>
+@*<button onclick="myFunction()">button
+    </button>*@
+@*<button id="Create">Order!</button>*@
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        //var ert=0;
+        //var emd=0;
+        
+        $("#name").change(function () {
+          var pizzza = $("#name option:selected").val();
+          window.ert = parseInt(pizzza);
+                  
+        });
+       
+        //$(document).ready(function () { validate(); });
+        function validate(){
+        var quan=$("#qnty").val();
+        var emd=parseInt(quan);
+        
+            var total = ert * emd;
+            $('#tot').val(total);
+        }
+
+        //function myFunction() {
+        //    alert("order has been placed!");
+        //}
+        //const button = document.getElementById('Create');
+        //button.addEventListener('click', () => {
+        //    alert('Button clicked!');
+        //});
+
+
+    </script>
+}

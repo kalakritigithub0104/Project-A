@@ -1,0 +1,61 @@
+﻿@model PizzaOrderSystem2.Models.Pizza
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+<style>
+    .navbar-expand-sm {
+        background-color: crimson;
+    }
+</style>
+<body style="background-color:burlywood;">
+</body>
+
+<div>
+    <h4>Pizza</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Speciality)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Speciality)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Crust)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Crust)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Size)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Size)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.PizzaID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
